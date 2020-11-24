@@ -15,7 +15,7 @@ function enableFightButtons(){
 
 function attack() {
 	if(passivePlayer.protected === true){
-    //health damage when defending 
+    //health damage when defending 50%
     passivePlayer.health -= activePlayer.damage/2;
     passivePlayer.protected = false;
   }else{
@@ -26,7 +26,7 @@ function attack() {
   
   if(passivePlayer.health < 0){ 
     passivePlayer.health=0; }
-  //update healths points on player stats
+  //update health points on player stats
   $("#"+passivePlayer.name+"health").text(passivePlayer.health);
  
 

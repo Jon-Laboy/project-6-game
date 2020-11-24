@@ -145,9 +145,8 @@ Player.prototype.move = function (target) {
     rowX = []; rowY = [];
     $("div#board > div").removeClass('range-highlight');
     enableFightButtons();
+    //display fight modal alert when players ready to fight
     fightModal.style.display = "block";
-
-    //REAL ALERT HERE/////////////////////////////////////////////
   }
 
 };
@@ -155,7 +154,7 @@ Player.prototype.move = function (target) {
 player1.activatePlayer();  //starting player is player1 
 
 /*  Movements   */
-//checking if available and making opeque thing show 
+//checking if available and making opaque figure show 
 box.hover(function () {
   if (jQuery.inArray(parseInt(this.id), rowX) >= 0 || jQuery.inArray(parseInt(this.id), rowY) >= 0) {
     //show the opaque moving image defined in the css 
@@ -165,7 +164,7 @@ box.hover(function () {
   $(this).removeClass(window.activePlayer.name + 'Moving');
 });
 
-//on click to move character to new location 
+//on click to move character to new location and remove opaque moving image
 box.on("click", function () {
   let target = parseInt(this.id);
   if (jQuery.inArray(target, rowX) >= 0 || jQuery.inArray(target, rowY) >= 0) {
