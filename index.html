@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+    <!-- GAME TITLE -->
+    <h1 class="game-title">Space Wars</h1>
+   
+    <!-- NEWGAME BUTTON/WEAPON STATS/GAME RULES BUTTON -->
+    <div class="first-flex">
+
+        <div>
+            <button type="button" class="new-game-btn " onclick="location.reload();">New Game</button>
+        </div>
+        <div class="second-flex">
+            <div>
+                <h5>Green Gun</h5><img src='img/weapon1.png' height="50" width="50" alt="Green Gun">
+                <p><b>40</b></p>
+            </div>
+            <div>
+                <h5>Yellow Gun</h5><img src='img/weapon2.png' height="50" width="50" alt="Yellow Gun">
+                <p><b>20</b></p>
+            </div>
+            <div>
+                <h5>Red Saber</h5><img src='img/weapon3.png' height="50" width="50" alt="Red Saber">
+                <p><b>30</b></p>
+            </div>
+            <div>
+                <h5>Sputnik</h5><img src='img/weapon4.png' height="50" width="50" alt="Sputnik">
+                <p><b>50</b></p>
+            </div>
+        </div>
+        <div>
+            <button type="button" id="game-rules-btn" class="game-rules-btn" data-toggle="modal"
+                data-target="#rulesmodal">Game
+                Rules</button>
+        </div>
+    </div>
+    <!-- Game Rules Modal -->
+    <div id="rulesModal" class="rules-modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-rules">&times;</span>
+                <h2>Game Rules</h2>
+            </div>
+            <ul>
+                <li>Each player can move up to 3 boxes (horizontally or vertically).</li>
+                <li>If players cross over adjacent squares (horizontally or vertically),a battle begins.</li>
+                <li>Players can then choose to attack or defend.</li>
+                <li>The damage depends on the weapon the player collected on the board.</li>
+                <li>The players fight until the life point of a player falls to 0.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="game-over-modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-game-over">&times;</span>
+                <h2>Game Over!</h2>
+            </div>
+            <div class="modal-body">
+                <p>The Winner is....</p>
+                <p></p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- PLAYER 1/PLAYER2 STATS -->
+
+    <div class="player-container-flex">
+
+        <div class="player-one-stats">
+            <div class="player-stats-flex">
+                <img src="./img/player1.png" alt="player1" class="avatarP1" width="40" height="40"><img
+                    src="./img/heart.png" alt="heart-icon" class="heart-icon" width="50" height="60"> <span
+                    class="health" id="player1health"> 100</span>
+                <img src="./img/damage.png" alt="damage-icon" width="40" height="34"><span class="player-damage"
+                    id="player1damage">10</span>
+            </div>
+            <div class="button-flex">
+                <span>
+                    <button type="button" value="Attack" class="attack-btn" id="P1A" disabled
+                        onclick="attack()">Attack</button>
+                </span>
+                <span>
+                    <button type="button" value="Defend" class="defend-btn" id="P1D" disabled
+                        onclick="defend()">Defend</button>
+                </span>
+            </div>
+        </div>
+
+        <div class="player-two-stats">
+            <div class="player-stats-flex">
+                <img src="./img/player2.png" alt="player2" class="avatarP2" width="40" height="40"><img
+                    src="./img/heart.png" alt="heart-icon" class="heart-icon" width="50" height="60"> <span
+                    class="health" id="player2health">100</span>
+                <img src="./img/damage.png" alt="damage-icon" width="40" height="34">
+                <span class="player-damage" id="player2damage">10</span>
+            </div>
+
+            <div class="button-flex">
+                <button type="button" value="Attack" class="attack-btn" id="P2A" disabled
+                    onclick="attack()">Attack</button>
+
+
+                <button type="button" value="Defend" class="defend-btn" id="P2D" disabled
+                    onclick="defend()">Defend</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAME BOARD -->
+
+    <div id="board"></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/board.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/move.js"></script>
+    <script src="js/fight.js"></script>
+</body>
+
+</html>
