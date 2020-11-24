@@ -1,4 +1,5 @@
 /*Range of Movement */
+//while loops to determine available places nested if statements to execute blocked or not
 Player.prototype.setMoveRange = function (p) {
   $("div#board > div").removeClass("range-highlight")
 
@@ -78,7 +79,7 @@ Player.prototype.setMoveRange = function (p) {
   }
 
   return [rowX, rowY];
-} //while loops to determine available places nested if statements to execute blocked or not ...tell overall structure 
+} 
 
 /*  Change active player   */
 Player.prototype.activatePlayer = function () {
@@ -98,6 +99,7 @@ Player.prototype.activatePlayer = function () {
 
 /* Move / see if a fight starts */
 //on each move if have weapon available or not 
+//checking difference between new and old positions and weapons available //
 Player.prototype.move = function (target) {
 
 
@@ -128,9 +130,9 @@ Player.prototype.move = function (target) {
       newbox.innerHTML = '<img src="img/' + this.image + '" height="58"></img>';
       break;
   }
-  oldbox.innerHTML = ""; //checking difference between new and old positions and weapons available //
+  oldbox.innerHTML = ""; 
 
-  //check for adjacents player // add alert  
+  //Check for adjacents player  if so fight///////
   $.each(adjacents, function (index, adjacent) {
     if ($("#" + adjacent).find('img').length) {
       fight = true;
@@ -141,7 +143,7 @@ Player.prototype.move = function (target) {
     passivePlayer.activatePlayer();  //player change
 
   } else {
-    //fight  and remove move range highlight
+    //Fight  and remove move range highlight
     rowX = []; rowY = [];
     $("div#board > div").removeClass('range-highlight');
     enableFightButtons();
@@ -173,8 +175,7 @@ box.on("click", function () {
   }
 });
 
-/*  Change weapon  *///////////////////////////
-// one function change actual weapon array already have previously 
+/*  Check for and Change weapon  *///////////////////////////
 function checkWeapon(searchFrom, searchTo, target) {
   let diff = searchTo - searchFrom;
   let movedArray = [];
@@ -207,7 +208,7 @@ function checkWeapon(searchFrom, searchTo, target) {
       }
     }
   }
-  //weaon and damage change 
+  //Weapon and Damage Change 
   for (let j = 0; j <= movedArray.length; j++) {
     let passedBox = $("div#" + movedArray[j]);
 
@@ -228,7 +229,7 @@ function checkWeapon(searchFrom, searchTo, target) {
     } else {
       newWeapon = '';
     }
-//removing class of previous weapon 
+//Removing class of previous weapon 
     if (newWeapon != '') {
       passedBox.removeClass(newWeapon);
       passedBox.addClass(oldWeapon);
