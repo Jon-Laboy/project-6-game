@@ -114,11 +114,13 @@ weapon4.generatePosition();
 let rulesModal = document.getElementById("rulesModal");
 // Get the game over modal
 let gameOverModal = document.getElementById("gameOverModal")
+// Get the fight modal
+let fightModal = document.getElementById("fightModal")
 
 // Get the <span> element that closes the rules modal
 let closeRules = document.getElementsByClassName("close-rules")[0];
 let closeGameOver = document.getElementsByClassName("close-game-over")[0];
-
+let closeFightModal = document.getElementsByClassName("close-fight-modal")[0];
 // Get the button that opens the rules modal
 let rulesBtn = document.getElementById("game-rules-btn");
 
@@ -132,11 +134,17 @@ closeRules.onclick = function() {
   rulesModal.style.display = "none";
 }
 
-// When the user clicks on <span> (x), close the modal
+closeFightModal.onclick = function() {
+    fightModal.style.display = "none";
+  }
+
 closeGameOver.onclick = function() {
     gameOverModal.style.display = "none";
     location.reload();
   }
+
+  //hide fight modal until fight begins 
+  fightModal.style.display = "none";
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -145,6 +153,9 @@ window.onclick = function(event) {
   }
     if (event.target == gameOverModal) {
         location.reload();
+    }
+    if (event.target == fightModal) {
+        fightModal.style.display = "none"; 
     }
   }
 

@@ -314,6 +314,19 @@ body{
   cursor: pointer;
 }
 
+.close-fight-modal {
+  color: rgb(10, 10, 82);
+  float: right;
+  font-size: 38px;
+  font-weight: bold;
+  margin-right: .08em;
+}
+
+.fight-message {
+  text-align: center;
+  font-family: Righteous, Helvetica, sans-serif;
+  letter-spacing: .8rem;
+}
 
   
   @media (max-width:610px){

@@ -6,7 +6,7 @@ Player.prototype.setMoveRange = function (p) {
   rowY = [];
 
   let up = p - 10, down = p + 10, left = p - 1, right = p + 1, blocked = false;
-  let xmin = p - p % 10;   ///LOOK UP 
+  let xmin = p - p % 10;  
   let xmax = xmin + 9;
 
   while (up >= 0 && up >= p - 30) {
@@ -78,7 +78,7 @@ Player.prototype.setMoveRange = function (p) {
   }
 
   return [rowX, rowY];
-}
+} //while loops to determine available places nested if statements to execute blocked or not ...tell overall structure 
 
 /*  Change active player   */
 Player.prototype.activatePlayer = function () {
@@ -97,6 +97,7 @@ Player.prototype.activatePlayer = function () {
 }
 
 /* Move / see if a fight starts */
+//on each move if have weapon available or not 
 Player.prototype.move = function (target) {
 
 
@@ -127,9 +128,9 @@ Player.prototype.move = function (target) {
       newbox.innerHTML = '<img src="img/' + this.image + '" height="58"></img>';
       break;
   }
-  oldbox.innerHTML = "";
+  oldbox.innerHTML = ""; //checking difference between new and old positions and weapons available //
 
-  //check for adjacents player
+  //check for adjacents player // add alert  
   $.each(adjacents, function (index, adjacent) {
     if ($("#" + adjacent).find('img').length) {
       fight = true;
@@ -144,14 +145,17 @@ Player.prototype.move = function (target) {
     rowX = []; rowY = [];
     $("div#board > div").removeClass('range-highlight');
     enableFightButtons();
+    fightModal.style.display = "block";
+
+    //REAL ALERT HERE/////////////////////////////////////////////
   }
 
 };
 
-player1.activatePlayer();  //starting player
+player1.activatePlayer();  //starting player is player1 
 
 /*  Movements   */
-
+//checking if available and making opeque thing show 
 box.hover(function () {
   if (jQuery.inArray(parseInt(this.id), rowX) >= 0 || jQuery.inArray(parseInt(this.id), rowY) >= 0) {
     //show the opaque moving image defined in the css 
@@ -170,7 +174,8 @@ box.on("click", function () {
   }
 });
 
-/*  Change weapon  */
+/*  Change weapon  *///////////////////////////
+// one function change actual weapon array already have previously 
 function checkWeapon(searchFrom, searchTo, target) {
   let diff = searchTo - searchFrom;
   let movedArray = [];
@@ -224,7 +229,7 @@ function checkWeapon(searchFrom, searchTo, target) {
     } else {
       newWeapon = '';
     }
-
+//removing class of previous weapon 
     if (newWeapon != '') {
       passedBox.removeClass(newWeapon);
       passedBox.addClass(oldWeapon);
