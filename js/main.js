@@ -1,15 +1,14 @@
 // variables
 let array = [];
-let cell;   
-var activePlayer, passivePlayer; 
+let cell;
+var activePlayer, passivePlayer;
 let box = $("div#board > div");
 let adjacents;
-let P1Abtn = $("#P1A") 
-let P1Dbtn = $("#P1D") 
-let P2Abtn = $("#P2A") 
-let P2Dbtn = $("#P2D") 
-let fight = false; 
-
+let P1Abtn = $("#P1A")
+let P1Dbtn = $("#P1D")
+let P2Abtn = $("#P2A")
+let P2Dbtn = $("#P2D")
+let fight = false;
 
 
 
@@ -61,7 +60,7 @@ class Player {
         this.name = name;
         this.image = image;
         this.weaponDamage = null;
-        this.health = 100; 
+        this.health = 100;
         this.damage = 10;
     }
     generatePosition() {
@@ -73,7 +72,7 @@ class Player {
         mybox.innerHTML = '<img src="img/' + this.image + '" height="56" ></img>';
         //Prevent  players placement in adjacent divs ////////////////////////
         let contacts = [cell - 1, cell + 1, cell - 10, cell + 10];
-        $.each(contacts,(index, contact) => {
+        $.each(contacts, (index, contact) => {
             if ((contact >= 0 && contact < 100) && array[contact] == null) {
                 array[contact] = 'full';
             }
@@ -125,39 +124,39 @@ let closeFightModal = document.getElementsByClassName("close-fight-modal")[0];
 let rulesBtn = document.getElementById("game-rules-btn");
 
 // When the user clicks on the button, open the modal
-rulesBtn.onclick = function() {
-  rulesModal.style.display = "block";
+rulesBtn.onclick = function () {
+    rulesModal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-closeRules.onclick = function() {
-  rulesModal.style.display = "none";
+closeRules.onclick = function () {
+    rulesModal.style.display = "none";
 }
 
-closeFightModal.onclick = function() {
+closeFightModal.onclick = function () {
     fightModal.style.display = "none";
-  }
+}
 
-closeGameOver.onclick = function() {
+closeGameOver.onclick = function () {
     gameOverModal.style.display = "none";
     location.reload();
-  }
+}
 
-  //hide fight modal until fight begins 
-  fightModal.style.display = "none";
+//hide fight modal until fight begins 
+fightModal.style.display = "none";
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == rulesModal) {
-    rulesModal.style.display = "none";
-  }
+window.onclick = function (event) {
+    if (event.target == rulesModal) {
+        rulesModal.style.display = "none";
+    }
     if (event.target == gameOverModal) {
         location.reload();
     }
     if (event.target == fightModal) {
-        fightModal.style.display = "none"; 
+        fightModal.style.display = "none";
     }
-  }
+}
 
 
 
